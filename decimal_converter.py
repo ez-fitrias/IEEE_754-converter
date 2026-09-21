@@ -20,9 +20,20 @@ def to_binaryRound(decimal_number):
             decimal_number = decimal_number // 2
     return binary
 
-def to_binaryDecimal(decimal_number):  
-
-
+def to_binaryDecimal(decimal_number, length):  
+    binary = ""
+    if decimal_number == 0:
+        binary = "0"
+    else:
+        digit = 0
+        while decimal_number > 0 and digit <= length:
+            binary += str(int(decimal_number * 2))
+            decimal_number *= 2
+            if decimal_number >= 1:
+                decimal_number -= 1
+            print(decimal_number)
+            digit += 1
+    return binary
 
 def to_octa(decimal_number):
     octa = ""
@@ -43,3 +54,5 @@ def to_other_bases(decimal_number, base):
             result = str(decimal_number % base) + result
             decimal_number = decimal_number // base
     return result
+
+print(to_binaryDecimal(0.5, 23))
