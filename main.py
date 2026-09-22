@@ -39,7 +39,5 @@ while len(normalisedExponentBinary) < 8:
     normalisedExponentBinary = "0" + normalisedExponentBinary
 
 gleitKommazahl = mostLeftBit + normalisedExponentBinary + behindOfCommaBinary
-print(mostLeftBit)
-print(normalisedExponentBinary)
-print(behindOfCommaBinary)
+
 print(gleitKommazahl)
