@@ -20,22 +20,32 @@ def to_binaryRound(decimal_number):
             decimal_number = decimal_number // 2
     return binary
 
-def to_binaryDecimal(decimal_number, length):  
+def to_binaryDecimal(decimal_number, findOne): 
+    number = decimal_number
     binary = ""
-    if decimal_number == 0:
-        binary = "0" * length
+    if findOne:
+        startCount = False
+    else:
+        startCount = True
+    exponent = 0
+    if number == 0:
+        binary = "0" * 23
     else:
         digit = 0
-        while decimal_number > 0 and digit <= length:
-            binary += str(int(decimal_number * 2))
-            decimal_number *= 2
-            if decimal_number >= 1:
-                decimal_number -= 1
-            print(decimal_number)
-            digit += 1
-        while len(binary) < length:
-            binary += "0"
-    return binary
+        while digit < 23:
+            binary += str(int(number * 2))
+            if findOne and str(int(number * 2)) == "1" and exponent == 0:
+                exponent = -len(binary)
+                startCount = True
+                digit -= 1
+
+            number *= 2
+            if number >= 1:
+                number -= 1
+            
+            if startCount:
+                digit += 1
+    return [binary, exponent]
 
 def to_octa(decimal_number):
     octa = ""

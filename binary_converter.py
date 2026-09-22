@@ -8,5 +8,4 @@ def to_hexadecimal(binaryNumber):
         for x in range(len(hexa_binarList)):
             if binaryNumber[i:i+4] == hexa_binarList[x][0]:
                 hexadecimal += hexa_binarList[x][1]
-
     return hexadecimal
