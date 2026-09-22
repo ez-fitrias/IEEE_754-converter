@@ -1,4 +1,5 @@
 import decimal_converter as dc
+import binary_converter as bc
 
 def tryCatchInt(text):
     input_value = input(text)
@@ -39,5 +40,7 @@ while len(normalisedExponentBinary) < 8:
     normalisedExponentBinary = "0" + normalisedExponentBinary
 
 gleitKommazahl = mostLeftBit + normalisedExponentBinary + behindOfCommaBinary
+gleitKommazahlHexa = bc.to_hexadecimal(gleitKommazahl)
 
-print(gleitKommazahl)
+print(f"{number} in Gleitkommazahl is: {gleitKommazahl} | in Hexadecimal: {gleitKommazahlHexa}")
+
