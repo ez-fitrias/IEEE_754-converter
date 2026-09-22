@@ -56,5 +56,3 @@ def to_other_bases(decimal_number, base):
             result = str(decimal_number % base) + result
             decimal_number = decimal_number // base
     return result
-
-print(to_binaryDecimal(0.5, 23))
