@@ -23,7 +23,7 @@ def to_binaryRound(decimal_number):
 def to_binaryDecimal(decimal_number, length):  
     binary = ""
     if decimal_number == 0:
-        binary = "0"
+        binary = "0" * length
     else:
         digit = 0
         while decimal_number > 0 and digit <= length:
@@ -33,6 +33,8 @@ def to_binaryDecimal(decimal_number, length):
                 decimal_number -= 1
             print(decimal_number)
             digit += 1
+        while len(binary) < length:
+            binary += "0"
     return binary
 
 def to_octa(decimal_number):
