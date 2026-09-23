@@ -51,20 +51,30 @@
                         <li>52 bits for the mantissa</li>
                     </ul>
                 </p>
-                <h3>Sign Bit</h3>
-                <p>
-                    The sign bit indicates whether the number is positive or negative. If the number is positive, the sign bit is 0; if the number is negative, the sign bit is 1.
-                </p>
-                <h3>Exponent Bits</h3>
-                <p>
-                    The exponent represents the power of 2 by which the mantissa is multiplied. In single precision, the exponent is stored as an 8-bit biased integer, and in double precision, it is stored as an 11-bit biased integer.
-                </p>
-                <p>
+                <dl>
+                    <dt>&diam;Sign Bit</dt>
+                    <dd>The sign bit indicates whether the number is positive or negative. If the number is positive, the sign bit is 0; if the number is negative, the sign bit is 1.</dd>
+                    <dt>&diam;Exponent Bits</dt>
+                    <dd>The exponent represents the power of 2 by which the mantissa is multiplied. In single precision, the exponent is stored as an 8-bit biased integer, and in double precision, it is stored as an 11-bit biased integer.
                     Just like the scientific notation, where a number can be represented using a mantissa and an exponent, the exponent in the floating-point representation serve the same purpose. The only difference being the base and a bias correction. This allows for a wide range of values to be represented. The bias is used to allow for both positive and negative exponents. This is because we can only have 8 bits to represent the exponent in single precision, which means we can only represent 256 different values (0 - 255). By using a bias of 127, we can represent exponents from -127 to +128.
-                </p>
-                <h3>Mantissa Bits</h3>
+                    </dd>
+                    <dt>&diam;Mantissa Bits</dt>
+                    <dd>The mantissa represents the precision bits of the number. It is stored as a binary fraction, with an implicit leading 1 for normalized numbers. Hence exponent is crucial, because it allows us to flexibly set the accuracy and the range of the floating-point.</dd>
+                </dl>
+                <h3></h3>
                 <p>
-                    The mantissa represents the precision bits of the number. It is stored as a binary fraction, with an implicit leading 1 for normalized numbers. Hence exponent is crucial, because it allows us to flexibly set the accuracy and the range of the floating-point.
+                    
+                </p>
+                <h3></h3>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                </p>
+                <h3></h3>
+                <p>
+                    
                 </p>
                 <h3>Conversion (single-precision/32-bits)</h3>
                 <ol>
