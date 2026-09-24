@@ -1,25 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="UTF-8">
-        <title>IEEE 754 Online Converter</title>
-        <link rel="icon" href="">
-    </head>
-    <body>
-        <header>
-            <h1>IEEE 754 Online Converter</h1>
-        </header>
-        <na>
-            <a href="/">Home</a>
-        </na>
-        <main>
-            <p>Type your number that you want to convert in the url in the convert=</p>
-            <p>The floating point representation of {{number}} is: {{fpr_binary}} | in Hexadecimal: {{fpr_hexa}}</p>
-        </main>
+{% extends "base.html" %}
 
-        <footer>
 
-        </footer>
-    </body>
-</html>
+
+{% block content %}
+
+<p>Type your number that you want to convert in the url in the convert=(your number)</p>
+<p>The floating point representation of {{number}} is: {{fpr_binary}} | in Hexadecimal: {{fpr_hexa}}</p>
+
+{% endblock %}
+
