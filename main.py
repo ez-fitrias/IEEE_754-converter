@@ -1,13 +1,13 @@
 import decimal_converter as dc
 import binary_converter as bc
 
-def tryCatchFloat(text):
-    input_value = input(text)
-    try:
-        return float(input_value)
-    except ValueError:
-        print("Please enter a valid number.")
-        return tryCatchFloat(text)
+# def tryCatchFloat(text):
+#     input_value = input(text)
+#     try:
+#         return float(input_value)
+#     except ValueError:
+#         print("Please enter a valid number.")
+#         return tryCatchFloat(text)
 
 def gleitKommazahl(number):
     if number == 0:
@@ -44,5 +44,5 @@ def gleitKommazahl(number):
     return [gleitKommazahl, gleitKommazahlHexa]
 
 
-number = tryCatchFloat("Please enter a number to be converted into 32 bit single precision IEEE 754 binary floating point representation: ")
-print(f"The floating point representation of {number} is: {gleitKommazahl(number)[0]} | in Hexadecimal: {gleitKommazahl(number)[1]}")
+# number = tryCatchFloat("Please enter a number to be converted into 32 bit single precision IEEE 754 binary floating point representation: ")
+# print(f"The floating point representation of {number} is: {gleitKommazahl(number)[0]} | in Hexadecimal: {gleitKommazahl(number)[1]}")
