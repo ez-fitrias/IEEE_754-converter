@@ -12,9 +12,17 @@ Error: {{message}}
 
 {% endblock %}
 
+{% block navigation %}
+
+<a href="/home/id/">Beranda</a>
+<a href="/convert=0/id/">Konverter</a>
+Bahasa: <a href="../id/">ID</a> | <a href="../en/">EN</a> | <a href="../de/">DE</a>
+
+{% endblock %}
+
 {% block content %}
 
-<p>Sorry, an error has occured. Reason of error: {{message}}</p>
+<p>Mohon maaf, terjadi kesalahan. Alasan error: {{message}}</p>
 
 {% endblock %}
 

@@ -12,6 +12,14 @@ Error: {{message}}
 
 {% endblock %}
 
+{% block navigation %}
+
+<a href="/home/en/">Home</a>
+<a href="/convert=0/en/">Converter</a>
+Language: <a href="../id/">ID</a> | <a href="../en/">EN</a> | <a href="../de/">DE</a>
+
+{% endblock %}
+
 {% block content %}
 
 <p>Sorry, an error has occured. Reason of error: {{message}}</p>

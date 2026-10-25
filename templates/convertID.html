@@ -2,20 +2,28 @@
 
 {% block web_title %}
 
-IEEE 754 Floating-Point Representation Online Converter
-
+Konverter Representasi *Floating-Point* IEEE 754 Online
 {% endblock %}
 
 {% block title %}
 
-IEEE 754 Floating-Point Representation Online Converter
+Konverter Representasi *Floating-Point* IEEE 754 Online
+
+{% endblock %}
+
+{% block navigation %}
+
+<a href="/home/id/">Beranda</a>
+<a href="/convert=0/id/">Konverter</a>
+Bahasa: <a href="../id/">ID</a> | <a href="../en/">EN</a> | <a href="../de/">DE</a>
+
 
 {% endblock %}
 
 {% block content %}
 
-<p>Type your number that you want to convert in the url in the convert=(your number)</p>
-<p>The floating point representation of {{number}} is: {{fpr_binary}} | in Hexadecimal: {{fpr_hexa}}</p>
+<p>Ketik angka yang ingin Anda konversi di URL: convert=(angka Anda)</p>
+<p>Representasi *Floating-Point* dari {{number}} adalah: {{fpr_binary}} | dalam Hexadecimal: {{fpr_hexa}}</p>
 
 {% endblock %}
 

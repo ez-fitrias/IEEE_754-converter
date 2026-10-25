@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block web_title %}
+
+IEEE 754 Gleitkommazahl Online Umwandler
+{% endblock %}
+
+{% block title %}
+
+IEEE 754 Gleitkommazahl Online Umwandler
+
+{% endblock %}
+
+{% block navigation %}
+
+<a href="/home/de/">Menü</a>
+<a href="/convert=0/de/">Umwandler</a>
+Sprache: <a href="../id/">ID</a> | <a href="../en/">EN</a> | <a href="../de/">DE</a>
+
+
+{% endblock %}
+
+{% block content %}
+
+<p>Tippen Sie die umzuwandelnde Zahl ein in der URL: convert=(deine Zahl)</p>
+<p>Die IEEE 754 Gleitkommazahl von {{number}} ist: {{fpr_binary}} | in Hexadezimal: {{fpr_hexa}}</p>
+
+{% endblock %}
+

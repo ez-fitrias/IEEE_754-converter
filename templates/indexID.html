@@ -2,13 +2,21 @@
 
 {% block web_title %}
 
-IEEE 754 Floating-Point Representation
+Representasi Bilangan*Floating-Point* IEEE 754
 
 {% endblock %}
 
 {% block title %}
 
-IEEE 754 Floating-Point Representation
+Representasi Bilangan*Floating-Point* IEEE 754
+
+{% endblock %}
+
+{% block navigation %}
+
+<a href="/home/id/">Beranda</a>
+<a href="/convert=0/id/">Konverter</a>
+Bahasa: <a href="../id/">ID</a> | <a href="../en/">EN</a> | <a href="../de/">DE</a>
 
 {% endblock %}
 
@@ -19,8 +27,8 @@ IEEE 754 Floating-Point Representation
     <p>
         Representasi *floating-point* adalah metode yang digunakan dalam komputasi untuk merepresentasikan bilangan riil secara aproksimatif. Metode ini memungkinkan cakupan nilai yang luas dengan adanya kompromi antara presisi dan rentang nilai. Berbeda dengan manusia yang memiliki pemahaman mendalam mengenai angka—terutama bilangan berbasis 10—komputer bekerja menggunakan sistem biner. Karena bilangan seperti 0,1, -2,5, dan sebagainya tidak dapat dikonversi secara langsung ke dalam bentuk biner, bilangan-bilangan tersebut direpresentasikan menggunakan format yang mencakup bit tanda (*sign bit*), eksponen, dan mantisa. Format ini dikenal sebagai standar IEEE 754. <br>Terdapat dua format utama:
         <ul>
-            <li>Single precision (32-bit) for small numbers</li>
-            <li>Double precision (64-bit) for larger numbers</li>
+            <li>Single precision (32-bit) untuk bilangan kecil</li>
+            <li>Double precision (64-bit) untuk bilangan lebih besar</li>
         </ul>
     </p>
     <figure>
@@ -28,60 +36,60 @@ IEEE 754 Floating-Point Representation
         src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Float_example.svg/1280px-Float_example.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail" 
         alt="Floating-point representation example"
         width="600"/>
-        <figcaption>Parts of the IEEE 754 single-precision floating-point representation </figcaption>
+        <figcaption>Bagian-Bagian dari Representasi *Floating-Point* IEEE 754 </figcaption>
     </figure>
 </section>
 <section class="sub-page" id="function-and-parts">
-    <h2>How does Floating-Point Representation Work?</h2>
+    <h2>Bagaimana Representasi *Floating-Point* Bekerja?</h2>
     <p>
-        The IEEE 754 standard defines how floating-point numbers are stored and calculated in computers. In single precision (32-bit), the format consists of:
+        Standar IEEE 754 mendefinisikan bagaimana bilangan *floating-point* disimpan dan dihitung dalam komputer. Dalam presisi tunggal (32-bit), format tersebut terdiri dari:
         <ul>
-            <li>1 bit for the sign</li>
-            <li>8 bits for the exponent</li>
-            <li>23 bits for the mantissa</li>
+            <li>1 bit untuk tanda</li>
+            <li>8 bits untuk eksponen</li>
+            <li>23 bits untuk mantissa</li>
         </ul>
-        In double precision (64-bit), the format consists of:
+        Dalam presisi ganda (64-bit), format tersebut terdiri dari:
         <ul>
-            <li>1 bit for the sign</li>
-            <li>11 bits for the exponent</li>
-            <li>52 bits for the mantissa</li>
+            <li>1 bit untuk tanda</li>
+            <li>11 bits untuk eksponen</li>
+            <li>52 bits untuk mantissa</li>
         </ul>
     </p>
     <dl>
         <dt>&diam;Sign Bit</dt>
-        <dd>The sign bit indicates whether the number is positive or negative. If the number is positive, the sign bit is 0; if the number is negative, the sign bit is 1.</dd>
+        <dd>Bit tanda menunjukkan apakah bilangan tersebut positif atau negatif. Jika bilangan tersebut positif, bit tanda adalah 0; jika bilangan tersebut negatif, bit tanda adalah 1.</dd>
         <dt>&diam;Exponent Bits</dt>
-        <dd>The exponent represents the power of 2 by which the mantissa is multiplied. In single precision, the exponent is stored as an 8-bit biased integer, and in double precision, it is stored as an 11-bit biased integer.
-        Just like the scientific notation, where a number can be represented using a mantissa and an exponent, the exponent in the floating-point representation serve the same purpose. The only difference being the base and a bias correction. This allows for a wide range of values to be represented. The bias is used to allow for both positive and negative exponents. This is because we can only have 8 bits to represent the exponent in single precision, which means we can only represent 256 different values (0 - 255). By using a bias of 127, we can represent exponents from -127 to +128.
+        <dd>Eksponen mewakili pangkat dari 2 yang mana mantissa dikalikan. Dalam presisi tunggal, eksponen disimpan sebagai integer biasa 8-bit, dan dalam presisi ganda, eksponen disimpan sebagai integer biasa 11-bit.
+        Sama seperti notasi ilmiah, di mana sebuah bilangan dapat direpresentasikan menggunakan mantissa dan eksponen, eksponen dalam representasi floating-point memiliki tujuan yang sama. Perbedaan utamanya adalah basis dan koreksi bias. Hal ini memungkinkan untuk merepresentasikan rentang nilai yang luas. Bias digunakan untuk memungkinkan baik eksponen positif maupun negatif. Hal ini terjadi karena kita hanya memiliki 8 bit untuk merepresentasikan eksponen dalam presisi tunggal, yang berarti kita hanya dapat merepresentasikan 256 nilai berbeda (0 - 255). Dengan menggunakan bias 127, kita dapat merepresentasikan eksponen dari -127 hingga +128.
         </dd>
         <dt>&diam;Mantissa Bits</dt>
-        <dd>The mantissa represents the precision bits of the number. It is stored as a binary fraction, with an implicit leading 1 for normalized numbers. Hence exponent is crucial, because it allows us to flexibly set the accuracy and the range of the floating-point.</dd>
+        <dd>Mantissa mewakili bit presisi dari bilangan. itu disimpan sebagai pecahan biner, dengan leading 1 yang implisit untuk angka yang dinormalisasi. Oleh karena itu, eksponen sangat penting, karena memungkinkan kita untuk menyetel akurasi dan rentang dari floating-point.</dd>
     </dl>
                     
-    <h3>Conversion (single-precision/32-bits)</h3>
+    <h3>Konversi (presisi tunggal/32-bit)</h3>
     <ol>
-        <li>Set the sign bit based on wether the number is positive or negative.</li>
+        <li>Tetapkan bit tanda berdasarkan apakah bilangan tersebut positif atau negatif.</li>
 
-        <li>Convert both of the integer(Number in front of the comma) and the decimal points(number after the comma) into its respective binary representation. You can check <a href="https://www.google.com" target="_blank">here</a> for a guide to do that.</li>
+        <li>Ubah kedua bagian integer (angka di depan koma) dan desimal (angka setelah koma) menjadi representasi biner masing-masing. Anda dapat memeriksa <a href="https://www.google.com" target="_blank">sini</a> untuk panduan melakukan hal tersebut.</li>
 
-        <li>Normalise the binary representation, by moving numbers from the front of the comma to behind of the comma or vice versa. Do it until the number in front of the comma is <strong>only 1</strong>.</li>
+        <li>Normalisasi representasi biner, dengan memindahkan angka dari depan koma ke belakang koma atau sebaliknya. Lakukan hingga angka di depan koma hanya berupa <strong>1</strong>.</li>
 
-        <li>The amount of the numbers you moved tells you the exponent. Note: if the numbers were moved from front to behind the comma, the exponent is positive. When the opposite is done, the exponent is negative. Just like in scientific notation.</li>
+        <li>Jumlah angka yang dipindahkan akan memberi tahu Anda eksponen. Catatan: jika angka dipindahkan dari depan ke belakang koma, eksponen adalah positif. Ketika kebalikannya dilakukan, eksponen adalah negatif. Sama seperti dalam notasi ilmiah.</li>
 
-        <li>Normalise the exponent by adding 127 into it.</li>
+        <li>Normalisasi eksponen dengan menambahkan 127 ke dalamnya.</li>
 
-        <li>Convert the normalised exponent into its binary representation. <a href="https://www.google.com" target="_blank">Here</a> is a guide for it. This will become the exponent bits. Note: make sure it is on <strong>8-bits format</strong>. If the converted exponent is not 8 bits long, simply add 0 in front of it until there is exactly 8 bits.</li>
+        <li>Ubah eksponen yang telah dinormalisasi menjadi representasi biner. <a href="https://www.google.com" target="_blank">Sini</a> adalah panduan untuk melakukannya. Ini akan menjadi bit eksponen. Catatan: pastikan itu dalam <strong>format 8-bit</strong>. Jika eksponen yang diubah tidak panjang 8 bit, cukup tambahkan 0 di depannya hingga ada tepat 8 bit.</li>
 
-        <li>Remember our normalised binary representation of the number on step 3? pick 23 bits of the mantissa(numbers behind of the comma) as our mantissa bits. If you somehow don't have 23 bits of it, i'm affraid you have to continue the conversion of the decimal-points on the step 2 until you have enough bits.</li>
+        <li>Ingat representasi biner yang telah dinormalisasi dari bilangan pada langkah 3? Pilih 23 bit dari mantissa (angka di belakang koma) sebagai bit mantissa kita. Jika Anda tidak memiliki 23 bit, saya takut Anda harus melanjutkan konversi dari titik desimal pada langkah 2 hingga Anda memiliki cukup bit.</li>
 
-        <li>Now put together all of the parts. The sign bit on the front, the exponent bits on the middle and the mantissa bit on the back.</li>
+        <li>Sekarang gabungkan semua bagian. Bit tanda di depan, bit eksponen di tengah dan bit mantissa di belakang.</li>
 
-        <li>Congratulations, you have succesfully converted a number into its single-precision IEEE 754 binary floating-point representation</li>
+        <li>Selamat, Anda telah berhasil mengonversi sebuah bilangan menjadi representasi floating-point biner IEEE 754 presisi tunggal</li>
     </ol>
 </section>
 <section class="sub-page" id="other-ressources">
-    <h2>Other Guides and Tools</h2>
-    <p>If you are still confused and struggling to do it correctly, you can check the guide video below.</p>
+    <h2>Sumber Daya Lainnya</h2>
+    <p>Jika Anda masih bingung dan kesulitan untuk melakukannya dengan benar, Anda dapat memeriksa video panduan di bawah ini.</p>
 
     <iframe width="560" height="315"
     src="" title=""
@@ -89,7 +97,7 @@ IEEE 754 Floating-Point Representation
     referrerpolicy="strict-origin-when-cross-origin"allowfullscreen>
     </iframe>
 
-    <p>We also have an online converter, which you can use <a href="/convert=0/">here</a>.</p>
+    <p>Kami juga memiliki konverter online, yang dapat Anda gunakan <a href="/convert=0/">di sini</a>.</p>
                 <!-- or simply type the number you want to convert into the box below -->
     <form action="">
     </form>

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block web_title %}
+
+IEEE 754 Gleitkommazahl
+
+{% endblock %}
+
+{% block title %}
+
+IEEE 754 Gleitkommazahl
+
+{% endblock %}
+
+{% block navigation %}
+
+<a href="/home/de/">Menü</a>
+<a href="/convert=0/de/">Umwandler</a>
+Sprache: <a href="../id/">ID</a> | <a href="../en/">EN</a> | <a href="../de/">DE</a>
+
+{% endblock %}
+
+{% block content %} 
+
+<section class="sub-page" id="introduction">
+    <h2>Was ist eine Gleitkommazahl Darstellung?</h2>
+    <p>
+        Die Gleitkommazahl-Darstellung ist eine Methode, die in der Informatik verwendet wird, um reelle Zahlen annähernd darzustellen. Sie ermöglicht eine breite Spanne an Werten mit einem Kompromiss zwischen Genauigkeit und Reichweite. Im Gegensatz zu Menschen, die ein tiefes Verständnis für Zahlen haben, insbesondere wenn es um Basis-10-Zahlen geht, arbeiten Computer mit einem Binärsystem. Da Zahlen wie 0.1, -2.5 usw. nicht direkt in Binärzahlen umgewandelt werden können, werden sie unter Verwendung eines Formats dargestellt, das einen Vorzeichenbit, einen Exponenten und eine Mantisse enthält. Dieses Format ist bekannt als die IEEE 754-Standard. <br>Es gibt zwei Hauptformate: 
+        <ul>
+            <li>Single precision (32-bit) für kleine Zahlen</li>
+            <li>Double precision (64-bit) für größere Zahlen</li>
+        </ul>
+    </p>
+    <figure>
+        <img 
+        src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Float_example.svg/1280px-Float_example.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail" 
+        alt="Floating-point representation example"
+        width="600"/>
+        <figcaption>Teile der IEEE 754 single-precision Gleitkommazahl-Darstellung </figcaption>
+    </figure>
+</section>
+<section class="sub-page" id="function-and-parts">
+    <h2>Wie funktioniert die Gleitkommazahl-Darstellung?</h2>
+    <p>
+        Die IEEE 754-Standard definiert, wie Gleitkommazahlen in Computern gespeichert und berechnet werden. In der Single Precision (32-bit) besteht das Format aus:
+        <ul>
+            <li>1 Bit für das Vorzeichen</li>
+            <li>8 Bits für den Exponenten</li>
+            <li>23 Bits für die Mantisse</li>
+        </ul>
+        In der Double Precision (64-bit) besteht das Format aus:
+        <ul>
+            <li>1 Bit für das Vorzeichen</li>
+            <li>11 Bits für den Exponenten</li>
+            <li>52 Bits für die Mantisse</li>
+        </ul>
+    </p>
+    <dl>
+        <dt>&diam;Sign Bit</dt>
+        <dd>Das Vorzeichenbit gibt an, ob die Zahl positiv oder negativ ist. Wenn die Zahl positiv ist, ist das Vorzeichenbit 0; wenn die Zahl negativ ist, ist das Vorzeichenbit 1.</dd>
+        <dt>&diam;Exponent Bits</dt>
+        <dd>Der Exponent stellt die Potenz von 2 dar, mit der die Mantisse multipliziert wird. In der Single Precision wird der Exponent als 8-bitige verzerrte Ganzzahl gespeichert, und in der Double Precision als 11-bitige verzerrte Ganzzahl.
+        Gleich wie in der wissenschaftlichen Notation, bei der eine Zahl mit einer Mantisse und einem Exponenten dargestellt werden kann, dienen auch die Exponenten in der Gleitkommazahl-Darstellung dem gleichen Zweck. Der einzige Unterschied ist die Basis und eine verzerrte Korrektur. Dies ermöglicht eine breite Spanne an Werten, die dargestellt werden können. Die verzerrung wird verwendet, um sowohl positive als auch negative Exponenten zu ermöglichen. Dies liegt daran, dass wir nur 8 Bits haben, um den Exponenten in der Single Precision darzustellen, was bedeutet, dass wir nur 256 verschiedene Werte (0 - 255) darstellen können. Durch die Verwendung einer verzerrung von 127 können wir Exponenten von -127 bis +128 darstellen.
+        </dd>
+        <dt>&diam;Mantissa Bits</dt>
+        <dd>Die Mantisse stellt die Präzisionsbits der Zahl dar. Sie wird als binäre Bruchzahl gespeichert, wobei eine implizite führende 1 für normalisierte Zahlen existiert. Daher ist der Exponent entscheidend, da er es uns ermöglicht, die Genauigkeit und den Wertebereich der Gleitkommazahl flexibel festzulegen.</dd>
+    </dl>
+                    
+    <h3>Umwandlung (single-precision/32-bits)</h3>
+    <ol>
+        <li>Legen Sie das Vorzeichenbit basierend darauf, ob die Zahl positiv oder negativ ist, fest.</li>
+
+        <li>Wandeln Sie sowohl die ganze Zahl (Zahl vor dem Komma) als auch die Dezimalstellen (Zahl nach dem Komma) in ihre jeweilige binäre Darstellung um. Sie können <a href="https://www.google.com" target="_blank">hier</a> eine Anleitung finden, um das zu tun.</li>
+
+        <li>Normalisieren Sie die binäre Darstellung, indem Sie Zahlen vom Vorne des Kommas zum Hinten des Kommas oder umgekehrt verschieben. Tun Sie das, bis die Zahl vor dem Komma nur noch <strong>1</strong> ist.</li>
+
+        <li>Die Anzahl der verschobenen Zahlen gibt Ihnen den Exponenten. Hinweis: Wenn die Zahlen vom Vorne zum Hinten des Kommas verschoben wurden, ist der Exponent positiv. Wenn das Gegenteil geschieht, ist der Exponent negativ. Gleich wie in der wissenschaftlichen Notation.</li>
+
+        <li>Normalisieren Sie den Exponenten, indem Sie 127 dazu addieren.</li>
+
+        <li>Wandeln Sie den normalisierten Exponenten in seine binäre Darstellung um. <a href="https://www.google.com" target="_blank">Hier</a> finden Sie eine Anleitung dafür. Dies wird die Exponentenbits werden. Hinweis: Stellen Sie sicher, dass es sich um das <strong>8-Bit-Format</strong> handelt. Wenn der konvertierte Exponent nicht 8 Bits lang ist, fügen Sie einfach 0 voran, bis genau 8 Bits vorhanden sind.</li>
+
+        <li>Erinnern Sie sich an unsere normalisierte binäre Darstellung der Zahl aus Schritt 3? Nehmen Sie 23 Bits der Mantisse (Zahlen hinter dem Komma) als unsere Mantissenbits. Wenn Sie irgendwie nicht 23 Bits haben, ist es mir leid, aber Sie müssen die Umrechnung der Dezimalstellen in Schritt 2 fortsetzen, bis Sie genügend Bits haben.</li>
+
+        <li>Setzen Sie nun alle Teile zusammen. Das Vorzeichenbit vorne, die Exponentenbits in der Mitte und die Mantissenbits hinten.</li>
+
+        <li>Glückwunsch, Sie haben erfolgreich eine Zahl in ihre single-precision IEEE 754 binäre Gleitkommazahl umgewandelt</li>
+    </ol>
+</section>
+<section class="sub-page" id="other-ressources">
+    <h2>Andere Ressourcen</h2>
+    <p>Wenn Sie immer noch verwirrt sind und Schwierigkeiten haben, es korrekt zu tun, können Sie das Anleitungsvideo unten überprüfen.</p>
+
+    <iframe width="560" height="315"
+    src="" title=""
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"allowfullscreen>
+    </iframe>
+
+    <p>Wir haben auch einen Online-Konverter, den Sie <a href="/convert=0/">hier</a> verwenden können.</p>
+                <!-- or simply type the number you want to convert into the box below -->
+    <form action="">
+    </form>
+</section>
+
+{% endblock %}

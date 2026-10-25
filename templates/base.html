@@ -15,9 +15,7 @@
         <header>
             <h1>{% block title %}{% endblock %}</h1>
             <nav>
-                <a href="/">Home</a>
-                <a href="/convert=0/">Converter</a>
-                Language: <a>ID</a> | <a>EN</a> | <a>DE</a>
+                {% block navigation %}{% endblock %}
             </nav>
         </header>
         <main>
